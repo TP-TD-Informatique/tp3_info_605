@@ -33,6 +33,13 @@ public class Table {
         return null;
     }
 
-    public void poserCubeSurCube(Cube cube, TailleCube taille, String couleur) {
+    public void poserCubeSurCube(Cube cube, TailleCube taille, Couleur couleur) {
+        Cube cubeD = getCube(taille, couleur);
+        if (cubeD != null) {
+            int i = cubeSurTable.indexOf(cubeD);
+            if (cube.setDessous(cubeD)) {
+                cubeSurTable.add(i, cube);
+            }
+        }
     }
 }

@@ -38,6 +38,9 @@ public class Robot {
     public void poserCube() {
     }
 
-    public void poserCube(TailleCube taille, String couleur) {
+    public void poserCube(TailleCube taille, Couleur couleur) {
+        if (!estMainVide()) {
+            support.poserCubeSurCube(cubeTenu, taille, couleur);
+        }
     }
 }
