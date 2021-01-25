@@ -12,4 +12,21 @@ public enum TailleCube {
                 return t;
         return TailleCube.grand;
     }
+
+    public boolean lessThanOrEquals(TailleCube taille) {
+        switch (this) {
+            case grand -> {
+                return true;
+            }
+            case moyen -> {
+                return taille == moyen || taille == petit;
+            }
+            case petit -> {
+                return taille == petit;
+            }
+            default -> {
+                return false;
+            }
+        }
+    }
 }
