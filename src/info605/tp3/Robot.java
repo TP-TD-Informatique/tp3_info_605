@@ -10,19 +10,29 @@ public class Robot {
     }
 
     public void creerCube(Couleur couleur, TailleCube taille) {
+        if (estMainVide()) {
+            setCubeTenu(new Cube(taille, couleur));
+        }
     }
 
     private boolean estMainVide() {
-        return false;
+        return cubeTenu == null;
     }
 
     private void setCubeTenu(Cube cubeTenu) {
+        this.cubeTenu = cubeTenu;
     }
 
     public void detruireCube() {
+        if (!estMainVide()) {
+            setCubeTenu(null);
+        }
     }
 
-    public void prendreCube(TailleCube taille, String couleur) {
+    public void prendreCube(TailleCube taille, Couleur couleur) {
+        if (estMainVide()) {
+            setCubeTenu(support.prendreCube(taille, couleur));
+        }
     }
 
     public void poserCube() {

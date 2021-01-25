@@ -31,4 +31,16 @@ public class Cube {
         }
         return false;
     }
+
+    public boolean isSameCube(TailleCube taille, Couleur couleur) {
+        return this.taille == taille && this.couleur == couleur;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Cube) {
+            return isSameCube(((Cube) obj).taille, ((Cube) obj).couleur);
+        }
+        return false;
+    }
 }

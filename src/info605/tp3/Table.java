@@ -6,15 +6,17 @@ import java.util.List;
 public class Table {
     private final List<Cube> cubeSurTable = new ArrayList<Cube>();
 
-    public Cube prendreCube(TailleCube taille, String couleur) {
-        return null;
-    }
+    public Cube prendreCube(TailleCube taille, Couleur couleur) {
+        Cube cube = getCube(taille, couleur);
+        depileCube(cube);
 
-    private boolean estCubeRecuperable(Cube cube) {
-        return false;
+        return cube;
     }
 
     private void depileCube(Cube cube) {
+        int i = cubeSurTable.indexOf(cube);
+        cubeSurTable.add(i, cube.getDessous());
+        cube.setDessous(null);
     }
 
     public void poseCubeSurTable(Cube cube) {
@@ -23,7 +25,12 @@ public class Table {
     private void addCubeSurTable(Cube cube) {
     }
 
-    private void getCube(TailleCube taille, String couleur) {
+    private Cube getCube(TailleCube taille, Couleur couleur) {
+        for (Cube cube : cubeSurTable)
+            if (cube.isSameCube(taille, couleur))
+                return cube;
+
+        return null;
     }
 
     public void poserCubeSurCube(Cube cube, TailleCube taille, String couleur) {

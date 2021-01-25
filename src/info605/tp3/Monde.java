@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Monde {
 
     public static void ecrire(Couleur coul, String s) {
-        System.out.printf("\033[%d;1m%s\033[0m\n", coul.ordinal()+31, s);
+        System.out.printf("\033[%d;1m%s\033[0m\n", coul.ordinal() + 31, s);
     }
 
     public static void main(String[] args) {
@@ -33,6 +33,13 @@ public class Monde {
                 case '2' -> {
                     System.out.println("Le cube tenu par le robot va être détruit ");
                     D2R2.detruireCube();
+                }
+                case '3' -> {
+                    System.out.print("Couleur du cube : ");
+                    coul = Couleur.getCouleur(sc.next());
+                    System.out.print("Taille (grand/moyen/petit) : ");
+                    tc = TailleCube.getTaille(sc.next());
+                    D2R2.prendreCube(tc, coul);
                 }
             }
             //afficherMonde(D2R2, tab);
