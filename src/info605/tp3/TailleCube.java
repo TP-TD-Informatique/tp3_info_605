@@ -1,10 +1,16 @@
 package info605.tp3;
 
 public enum TailleCube {
-    grand,
-    moyen,
-    petit,
+    grand(3),
+    moyen(2),
+    petit(1),
     ;
+
+    private final int taille;
+
+    TailleCube(int taille) {
+        this.taille = taille;
+    }
 
     public static TailleCube getTaille(String taille) {
         for (TailleCube t : TailleCube.values())
@@ -13,20 +19,11 @@ public enum TailleCube {
         return TailleCube.grand;
     }
 
-    public boolean lessThanOrEquals(TailleCube taille) {
-        switch (this) {
-            case grand -> {
-                return true;
-            }
-            case moyen -> {
-                return taille == moyen || taille == petit;
-            }
-            case petit -> {
-                return taille == petit;
-            }
-            default -> {
-                return false;
-            }
-        }
+    public boolean lessThanOrEquals(TailleCube tailleCube) {
+        return this.taille <= tailleCube.taille;
+    }
+
+    public int getTaille() {
+        return taille;
     }
 }

@@ -44,8 +44,17 @@ public class Robot {
 
     public void poserCube(TailleCube taille, Couleur couleur) {
         if (!estMainVide()) {
-            support.poserCubeSurCube(cubeTenu, taille, couleur);
-            setCubeTenu(null);
+            if (support.poserCubeSurCube(cubeTenu, taille, couleur))
+                setCubeTenu(null);
+        }
+    }
+
+    public void afficherRobot() {
+        if (cubeTenu != null) {
+            System.out.print("----< ");
+            System.out.println(cubeTenu.getCouleurWithTaille());
+        } else {
+            System.out.println("----<");
         }
     }
 }

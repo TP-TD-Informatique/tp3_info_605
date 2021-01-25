@@ -15,6 +15,8 @@ public class Monde {
             System.out.println("1 - créer un cube");
             System.out.println("2 - détruire un cube");
             System.out.println("3 - prendre un cube");
+            System.out.println("4 - poser sur un cube");
+            System.out.println("5 - poser sur la table");
             System.out.println("f - fin du monde");
             System.out.print("Votre choix : ");
             c = sc.next().charAt(0);
@@ -37,16 +39,25 @@ public class Monde {
                     tc = TailleCube.getTaille(sc.next());
                     D2R2.prendreCube(tc, coul);
                 }
+                case '4' -> {
+                    System.out.print("Couleur du cube : ");
+                    coul = Couleur.getCouleur(sc.next());
+                    System.out.print("Taille (grand/moyen/petit) : ");
+                    tc = TailleCube.getTaille(sc.next());
+                    D2R2.poserCube(tc, coul);
+                }
+                case '5' -> {
+                    D2R2.poserCube();
+                }
             }
-            //afficherMonde(D2R2, tab);
+            afficherMonde(D2R2, tab);
         } while (c != 'f');
     }
 
-    /*private static void afficherMonde(Robot R, Table T) {
-        ecrire(Couleur.noir, "Etat du monde : ");
+    private static void afficherMonde(Robot R, Table T) {
+        System.out.println("Etat du monde :");
         R.afficherRobot();
         T.afficherTable();
-
-    }*/
+    }
 
 }

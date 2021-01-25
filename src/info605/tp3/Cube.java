@@ -16,6 +16,19 @@ public class Cube {
         return taille;
     }
 
+    public Couleur getCouleur() {
+        return couleur;
+    }
+
+    public String getCouleurWithTaille() {
+        String name = couleur.name();
+        return switch (taille.name()) {
+            case "grand" -> name.toUpperCase();
+            case "moyen" -> name.substring(0, 1).toUpperCase() + name.substring(1);
+            default -> name;
+        };
+    }
+
     public Cube getDessous() {
         return dessous;
     }

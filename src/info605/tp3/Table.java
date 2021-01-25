@@ -8,14 +8,16 @@ public class Table {
 
     public Cube prendreCube(TailleCube taille, Couleur couleur) {
         Cube cube = getCube(taille, couleur);
-        depileCube(cube);
+        if (cube != null) {
+            depileCube(cube);
+        }
 
         return cube;
     }
 
     private void depileCube(Cube cube) {
         int i = cubeSurTable.indexOf(cube);
-        cubeSurTable.add(i, cube.getDessous());
+        cubeSurTable.set(i, cube.getDessous());
         cube.setDessous(null);
     }
 
@@ -25,19 +27,34 @@ public class Table {
 
     private Cube getCube(TailleCube taille, Couleur couleur) {
         for (Cube cube : cubeSurTable)
-            if (cube.isSameCube(taille, couleur))
+            if (cube != null && cube.isSameCube(taille, couleur))
                 return cube;
 
         return null;
     }
 
-    public void poserCubeSurCube(Cube cube, TailleCube taille, Couleur couleur) {
+    public boolean poserCubeSurCube(Cube cube, TailleCube taille, Couleur couleur) {
         Cube cubeD = getCube(taille, couleur);
         if (cubeD != null) {
             int i = cubeSurTable.indexOf(cubeD);
             if (cube.setDessous(cubeD)) {
-                cubeSurTable.add(i, cube);
+                cubeSurTable.set(i, cube);
+                return true;
             }
         }
+        return false;
+    }
+
+    public void afficherTable() {
+        for (Cube cube : cubeSurTable) {
+            Cube c = cube;
+            while (c != null) {
+                System.out.print(c.getCouleurWithTaille() + " ");
+                c = c.getDessous();
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println();
     }
 }
