@@ -23,28 +23,27 @@ public class Monde {
             System.out.print("Votre choix : ");
             c = sc.next().charAt(0);
             switch (c) {
-                case '1':
+                case '1' -> {
                     System.out.print("Couleur du cube : ");
                     coul = Couleur.getCouleur(sc.next());
-//			ecrire (coul, "couleur saisie");
                     System.out.print("Taille (grand/moyen/petit) : ");
                     tc = TailleCube.getTaille(sc.next());
                     D2R2.creerCube(coul, tc);
-                    break;
-                case '2':
+                }
+                case '2' -> {
                     System.out.println("Le cube tenu par le robot va être détruit ");
                     D2R2.detruireCube();
-                    break;
+                }
             }
-            afficherMonde(D2R2, tab);
+            //afficherMonde(D2R2, tab);
         } while (c != 'f');
     }
 
-    private static void afficherMonde(Robot R, Table T) {
+    /*private static void afficherMonde(Robot R, Table T) {
         ecrire(Couleur.noir, "Etat du monde : ");
         R.afficherRobot();
         T.afficherTable();
 
-    }
+    }*/
 
 }
