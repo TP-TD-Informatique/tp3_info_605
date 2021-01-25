@@ -16,16 +16,12 @@ public class Cube {
         return taille;
     }
 
-    public Couleur getCouleur() {
-        return couleur;
-    }
-
     public Cube getDessous() {
         return dessous;
     }
 
     public boolean setDessous(Cube dessous) {
-        if (taille.lessThanOrEquals(dessous.getTaille())) {
+        if (dessous == null || taille.lessThanOrEquals(dessous.getTaille())) {
             this.dessous = dessous;
             return true;
         }

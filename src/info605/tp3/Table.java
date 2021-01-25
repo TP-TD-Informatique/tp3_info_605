@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Table {
-    private final List<Cube> cubeSurTable = new ArrayList<Cube>();
+    private final List<Cube> cubeSurTable = new ArrayList<>();
 
     public Cube prendreCube(TailleCube taille, Couleur couleur) {
         Cube cube = getCube(taille, couleur);
@@ -20,9 +20,7 @@ public class Table {
     }
 
     public void poseCubeSurTable(Cube cube) {
-    }
-
-    private void addCubeSurTable(Cube cube) {
+        cubeSurTable.add(cube);
     }
 
     private Cube getCube(TailleCube taille, Couleur couleur) {

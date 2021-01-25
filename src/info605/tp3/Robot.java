@@ -36,11 +36,16 @@ public class Robot {
     }
 
     public void poserCube() {
+        if (!estMainVide()) {
+            support.poseCubeSurTable(cubeTenu);
+            setCubeTenu(null);
+        }
     }
 
     public void poserCube(TailleCube taille, Couleur couleur) {
         if (!estMainVide()) {
             support.poserCubeSurCube(cubeTenu, taille, couleur);
+            setCubeTenu(null);
         }
     }
 }

@@ -4,10 +4,6 @@ import java.util.Scanner;
 
 public class Monde {
 
-    public static void ecrire(Couleur coul, String s) {
-        System.out.printf("\033[%d;1m%s\033[0m\n", coul.ordinal() + 31, s);
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Table tab = new Table();
